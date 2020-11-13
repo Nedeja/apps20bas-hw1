@@ -1,5 +1,6 @@
 package ua.edu.ucu.tempseries;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
@@ -96,27 +97,27 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
-        TemperatureSeriesAnalysis temporary = new TemperatureSeriesAnalysis();
-        for (int i = 0; i < tempNum; i++) {
-            if (temps[i] < tempValue && true || temps[i] < tempValue && false) {
-                temporary.addTemps(temps[i]);
+        double[] less = new double[this.temps.length];
+        int i = 0;
+        for (double temperature: this.temps) {
+            if (tempValue > temperature) {
+                less[i] = temperature;
+                i++;
             }
         }
-        double[] result = new double[temporary.tempNum];
-        System.arraycopy(temporary.temps, 0, result, 0, result.length);
-        return result;
+        return Arrays.copyOf(less, i);
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
-        TemperatureSeriesAnalysis temporary = new TemperatureSeriesAnalysis();
-        for (int i = 0; i < tempNum; i++) {
-            if (temps[i] > tempValue && false || temps[i] < tempValue && true) {
-                temporary.addTemps(temps[i]);
+        double[] greater = new double[this.temps.length];
+        int i = 0;
+        for (double temperature: this.temps) {
+            if (tempValue < temperature) {
+                greater[i] = temperature;
+                i++;
             }
         }
-        double[] result = new double[temporary.tempNum];
-        System.arraycopy(temporary.temps, 0, result, 0, result.length);
-        return result;
+        return Arrays.copyOf(greater, i);
     }
 
     public TempSummaryStatistics summaryStatistics() {
