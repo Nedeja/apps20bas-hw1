@@ -8,7 +8,7 @@ public class TemperatureSeriesAnalysis {
     private final int tempNum;
 
     public TemperatureSeriesAnalysis() {
-        temps = new double[1];
+        temps = new double[0];
         capacity = 1;
         tempNum = 0;
     }
@@ -131,7 +131,7 @@ public class TemperatureSeriesAnalysis {
         for (i = 0; i < tempNum; i++) {
             newTemps[i] = this.temps[i];
         }
-        for (j = i; j < this.tempNum + tempNum; j++) {
+        for (j = i; j < this.temps.length + temperatures.length; j++) {
             if (temperatures[j - i] < MIN) {
                 throw new InputMismatchException();
             }
