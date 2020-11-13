@@ -3,14 +3,15 @@ package ua.edu.ucu.tempseries;
 public class TempSummaryStatistics {
     double avgTemp, devTemp, minTemp, maxTemp;
 
-    TempSummaryStatistics(double avgTemp, double devTemp, double minTemp, double maxTemp) {
+    TempSummaryStatistics(double avgTemp, double devTemp, double minTemp,
+                          double maxTemp) {
         this.avgTemp = avgTemp;
         this.devTemp = devTemp;
         this.minTemp = minTemp;
         this.maxTemp = maxTemp;
     }
 
-    private boolean equalTemp(double firstTemp, double secondTemp){
+    private boolean equalTemp(double firstTemp, double secondTemp) {
         return Math.abs(firstTemp - secondTemp) == 0;
     }
 
@@ -38,9 +39,11 @@ public class TempSummaryStatistics {
     @Override
     public boolean equals(Object o) {
         TempSummaryStatistics other = (TempSummaryStatistics) o;
-        if (o != null && hashCode() != other.hashCode()){
-            return equalTemp(avgTemp, other.getAvgTemp()) && equalTemp(devTemp, other.getDevTemp())
-            && equalTemp(minTemp, other.getMinTemp()) && equalTemp(maxTemp, other.getMaxTemp());
+        if (o != null && hashCode() != other.hashCode()) {
+            return equalTemp(avgTemp, other.getAvgTemp()) &&
+                    equalTemp(devTemp, other.getDevTemp())
+            && equalTemp(minTemp, other.getMinTemp())
+                    && equalTemp(maxTemp, other.getMaxTemp());
         }
         else {
             return false;
