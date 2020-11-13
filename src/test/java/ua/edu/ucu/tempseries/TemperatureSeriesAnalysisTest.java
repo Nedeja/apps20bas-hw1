@@ -122,7 +122,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testFindTempsLessThenWithEmptyArray() {
         double[] expResult = {};
-        double[] actualResult = simpleArray.findTempsLessThen(-1);
+        double[] actualResult = emptyArray.findTempsLessThen(-1);
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
@@ -136,7 +136,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testFindTempsMoreThenWithEmptyArray() {
         double[] expResult = {};
-        double[] actualResult = simpleArray.findTempsGreaterThen(1.0);
+        double[] actualResult = emptyArray.findTempsGreaterThen(1.0);
         assertArrayEquals(expResult, actualResult, 0.000001);
     }
 
