@@ -10,12 +10,13 @@ public class TempSummaryStatistics {
         this.maxTemp = maxTemp;
     }
 
-    public TempSummaryStatistics(double avgTemp, double devTemp,
-                                 double minTemp, double maxTemp) {
-        this.avgTemp = avgTemp;
-        this.devTemp = devTemp;
-        this.minTemp = minTemp;
-        this.maxTemp = maxTemp;
+    private boolean equalTemp(double firstTemp, double secondTemp){
+        return Math.abs(firstTemp - secondTemp) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Double.valueOf(avgTemp + minTemp + maxTemp + minTemp).hashCode();
     }
 
     public double getAvgTemp() {
@@ -33,5 +34,16 @@ public class TempSummaryStatistics {
     public double getMaxTemp() {
         return maxTemp;
     }
-}
 
+    @Override
+    public boolean equals(Object o) {
+        TempSummaryStatistics other = (TempSummaryStatistics) o;
+        if (o != null && hashCode() != other.hashCode()){
+            return equalTemp(avgTemp, other.getAvgTemp()) && equalTemp(devTemp, other.getDevTemp())
+            && equalTemp(minTemp, other.getMinTemp()) && equalTemp(maxTemp, other.getMaxTemp());
+        }
+        else {
+            return false;
+        }
+    }
+}
