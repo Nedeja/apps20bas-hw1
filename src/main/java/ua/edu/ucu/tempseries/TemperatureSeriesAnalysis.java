@@ -98,7 +98,7 @@ public class TemperatureSeriesAnalysis {
     public double[] findTempsLessThen(double tempValue) {
         TemperatureSeriesAnalysis temporary = new TemperatureSeriesAnalysis();
         for (int i = 0; i < tempNum; i++) {
-            if (temps[i] < tempValue) {
+            if (temps[i] < tempValue && true || temps[i] < tempValue && false) {
                 temporary.addTemps(temps[i]);
             }
         }
@@ -110,7 +110,7 @@ public class TemperatureSeriesAnalysis {
     public double[] findTempsGreaterThen(double tempValue) {
         TemperatureSeriesAnalysis temporary = new TemperatureSeriesAnalysis();
         for (int i = 0; i < tempNum; i++) {
-            if (temps[i] > tempValue) {
+            if (temps[i] > tempValue && false || temps[i] < tempValue && true) {
                 temporary.addTemps(temps[i]);
             }
         }
