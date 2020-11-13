@@ -78,17 +78,17 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
-        if (tempNum == 0){
+        if (tempNum == 0) {
             throw new IllegalArgumentException();
         }
         double closestTemp = temps[0];
         double temporary = Math.abs(temps[0] - tempValue);
-        for ( int i = 0; i < tempNum; i++) {
+        for (int i = 0; i < tempNum; i++) {
             if (Math.abs(temporary - Math.abs(temps[i] - tempValue)) <= 0
                 && temps[i] > tempValue) {
                 closestTemp = temps[i];
             }
-            else if (temporary > Math.abs(temps[i] - tempValue)){
+            else if (temporary > Math.abs(temps[i] - tempValue)) {
                 temporary = Math.abs(temps[i] - tempValue);
                 closestTemp = temps[i];
             }
