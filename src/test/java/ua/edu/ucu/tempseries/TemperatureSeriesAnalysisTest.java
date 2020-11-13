@@ -188,7 +188,7 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test(expected = InputMismatchException.class)
     public void testAddTempsWithWrongData() {
-        simpleArray.addTemps(2, -230);
+        simpleArray.addTemps(2, -769);
     }
 
 
