@@ -12,7 +12,7 @@ public class TemperatureSeriesAnalysisTest {
     private TemperatureSeriesAnalysis simpleArray;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp(){
         emptyArray = new TemperatureSeriesAnalysis();
         simpleArray = new TemperatureSeriesAnalysis(new double[]{-5.0, 1.0, 3.0, 5.0});
     }
@@ -60,7 +60,7 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void  testDeviation() {
-        double expResult = 3.87298;
+        double expResult = 14.0;
         double actualResult = simpleArray.deviation();
 
         assertEquals(expResult, actualResult, 0.00001);
@@ -129,7 +129,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testFindTempsLessThen() {
         double[] expResult = {-5.0, 1.0, 3.0};
-        double[] actualResult = simpleArray.findTempsLessThen(4);
+        double[] actualResult = simpleArray.findTempsLessThen(4.0);
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
@@ -150,15 +150,15 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testSummaryStatisticsAvgTemp() {
         double expResult =
-                new TempSummaryStatistics(1.0, 3.87298, -5.0, 5.0).getAvgTemp();
+                new TempSummaryStatistics(1.0, 14.0, -5.0, 5.0).getAvgTemp();
         double actualResult = simpleArray.summaryStatistics().getAvgTemp();
         assertEquals(expResult, actualResult, 0.00001);
     }
 
     @Test
-    public void testSummaryStatisticsDefTemp() {
+    public void testSummaryStatisticsDevTemp() {
         double expResult =
-                new TempSummaryStatistics(2.0, 3.87298, -5.0, 5.0).getDevTemp();
+                new TempSummaryStatistics(2.0, 14.0, -5.0, 5.0).getDevTemp();
         double actualResult = simpleArray.summaryStatistics().getDevTemp();
         assertEquals(expResult, actualResult, 0.00001);
     }
@@ -166,7 +166,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testSummaryStatisticsMinTemp() {
         double expResult =
-                new TempSummaryStatistics(2.0, 3.87298, -5.0, 5.0).getMinTemp();
+                new TempSummaryStatistics(2.0, 14.0, -5.0, 5.0).getMinTemp();
         double actualResult = simpleArray.summaryStatistics().getMinTemp();
         assertEquals(expResult, actualResult, 0.00001);
     }
@@ -174,7 +174,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testSummaryStatisticsMaxTemp() {
         double expResult =
-                new TempSummaryStatistics(2.0, 3.87298, -5.0, 5.0).getMaxTemp();
+                new TempSummaryStatistics(2.0, 14.0, -5.0, 5.0).getMaxTemp();
         double actualResult = simpleArray.summaryStatistics().getMaxTemp();
         assertEquals(expResult, actualResult, 0.00001);
     }
@@ -188,7 +188,7 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test(expected = InputMismatchException.class)
     public void testAddTempsWithWrongData() {
-        int actualResult = simpleArray.addTemps(2, -230);
+        simpleArray.addTemps(2, -230);
     }
 
 
